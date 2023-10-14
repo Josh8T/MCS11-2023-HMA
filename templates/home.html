@@ -1,0 +1,57 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Correction with Pose Estimation</title>
+
+    <script>
+        function validateForm(buttonValue) {
+            let fileInput = document.querySelector('input[type="file"]');
+            let allowedExtensions = ['mp4', 'avi', 'mov', 'mkv'];
+            
+            // Extract the file extension from the file input value
+            let fileExtension = fileInput.value.split('.').pop().toLowerCase();
+            
+            if (buttonValue === "Upload") {
+                // Check if file input is empty
+                if (!fileInput.value) {
+                    alert('No file chosen!');
+                    return false;
+                }
+                
+                // Check if file has a valid extension
+                if (!allowedExtensions.includes(fileExtension)) {
+                    alert('Invalid video format!');
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Form Correction with Pose Estimation</h1>
+
+    <form action="/choose-action" method="post" enctype="multipart/form-data">
+        <label for="exercise">Select exercise:</label>
+        <select name="exercise" id="exercise">
+            <option value="Plank">Plank</option>
+            <option value="Bicep Curl">Bicep Curl</option>
+        </select>
+        <br><br>
+
+        <!-- Upload section -->
+        <h3>Submit Pre-recorded Footage:</h3><br>
+        <input type="file" name="file">
+        <input type="submit" name="submit_button" value="Upload" onclick="return validateForm('Upload');">
+        <br><br>
+
+        <!-- Live section -->
+        <h3>Real-Time Footage</h3>
+        <input type="submit" name="submit_button" value="Live" onclick="return validateForm('Live');">
+    </form>
+    <br>
+</body>
+</html>

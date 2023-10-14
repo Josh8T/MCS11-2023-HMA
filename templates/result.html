@@ -1,0 +1,20 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - Flask App</title>
+</head>
+<body>
+    <h2>Exercise Choice: {{ exercise }}</h2>
+
+    {% if video_file %}
+        <h1>Video uploaded successfully!</h1>
+    {% else %}
+        <h1>{{ message }}</h1>
+    {% endif %}
+    
+    <a href="/clear-uploads-and-go-home">Go back to Home</a>
+</body>
+</html>
